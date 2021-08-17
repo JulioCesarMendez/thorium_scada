@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_scada_make_test">
+            <field name="model">thoriumcorp.scada.test.create.init</field>
+            <field name="type">form</field>
+            <field name="name">scada_make_test</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_create_scada_test">
+            <field name="name">scada: Create test</field>
+            <field name="wiz_name">thoriumcorp.scada.test.create</field>
+            <field name="model">thoriumcorp.operator.scada.test</field>
+        </record>
+        <record model="ir.action.keyword" id="act_create_scada_test_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">thoriumcorp.operator.scada.test,-1</field>
+            <field name="action" ref="act_create_scada_test"/>
+        </record>
+
+        <record model="ir.ui.view" id="operator_scada_test_request_start_view_form">
+            <field name="model">thoriumcorp.operator.scada.test.request.start</field>
+            <field name="type">form</field>
+            <field name="name">operator_scada_test_request_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="operator_scada_test_request">
+            <field name="name">scada: Request new order</field>
+            <field name="wiz_name">thoriumcorp.operator.scada.test.request</field>
+        </record>
+
+        <record model="ir.action.keyword"
+                id="act_open_operator_scada_request_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">thoriumcorp.operator,-1</field>
+            <field name="action" ref="operator_scada_test_request"/>
+        </record>
+
+        <menuitem parent="health_scada.thoriumcorp_scadaweb_menu"
+            action="operator_scada_test_request"
+            id="menu_operator_scada_test_request" sequence="10"
+            icon="gnuhealth-execute"/>
+
+    </data>
+</odoo>

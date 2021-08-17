@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Include the SCADA Web Test mode -->
+        <record model="ir.actions.act_window" id="thoriumcorp_scada_web_view">
+            <field name="name">Thoriumcorp SCADA Web</field>
+            <field name="res_model">scada.web.pruebas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No Test requested
+                </p>
+                <p>
+                    You can add some register
+                </p>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="thoriumcorp_scada_web_form">
+            <field name="model">scada.web.pruebas</field>
+            <field name="name">thoriumcorp_scada_web_form</field>
+            <field name="arch" type="xml">
+                <form string="SCADA Web Test">
+                    <notebook>
+                        <page name="SCADA_Web_Test_info" string="SCADA Web Test Info">
+                            <group string="Labs Test">
+                                <field name="scada_web_test_id" string="Tests"/>
+                                <field name="status" string="Estado:" />
+                                <field name="current_sec" string="Segundo actual:" />
+                                <field name="minutes" string="Minuto actual:" />
+                                <field name="run" string="Correr:" 
+                                    widget="boolean_button"
+                                    options='{
+                                        "terminology": {
+                                            "string_true": True,
+                                            "string_hover_true": "Corriendo prueba.",
+                                            "string_false": False,
+                                            "string_hover_false": "Prueba detenida."
+                                            }
+                                        }'
+                                />
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <!-- Menu Items -->
+        <menuitem
+            id="thoriumcorp_root"
+            name="SCADA Web"
+            sequence="50"
+            web_icon="thoriumcorp_scada,static/description/icon.png"
+        />
+        <menuitem
+            id="thoriumcorp_scada_web_menu"
+            name="SCADA"
+            sequence="10"
+            parent="thoriumcorp_root"
+        />
+        <menuitem
+            id="thoriumcorp_labtest_request"
+            name="SCADA Web Test Requests"
+            sequence="10"
+            parent="thoriumcorp_scada_web_menu"
+            action="thoriumcorp_scada_web_view"
+        />
+    </data>
+</odoo>

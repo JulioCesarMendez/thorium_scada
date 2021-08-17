@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--                                                                       -->
+<!--    Copyright (C) 2020-2030 Thorium Corp FP <help@thoriumcorp.website  -->
+<!--                                                                       -->
+
+<odoo>
+    <data>
+
+<!-- BEGIN scada ADMINISTRATION GROUP ACCESS RIGHTS -->
+
+<!-- Create the Thorium scada Administration group -->
+        <record model="res.group" id="group_thoriumcorp.scada_admin">
+            <field name="name">Thorium Corp scada Administration</field>
+        </record>
+
+<!-- Assign the Group to the "admin" user -->
+
+        <record model="res.user-res.group" id="user_admin_group_thoriumcorp.scada">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+        </record>
+
+<!-- Access to Menus -->
+
+        <record model="ir.ui.menu-res.group" id="menu_thoriumcorp.group_thoriumcorp.scada_conf_admin">
+            <field name="menu" ref="thoriumcorp.conf_scadaweb"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+        </record>
+
+        <record model="ir.ui.menu-res.group" id="menu_thoriumcorp.group_thoriumcorp.scada_admin">
+            <field name="menu" ref="thoriumcorp.scadaweb_menu"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+        </record>
+
+<!-- Access rights to models for the thoriumcorp.scada admin group -->
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_create_init_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.create.init')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_critearea_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.critearea')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_type_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test_type')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_units_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.units')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_patient_scada_test_admin">
+            <field name="model" search="[('model', '=', 'thoriumcorp.patient.scada.test')]"/>
+            <field name="group" ref="group_thoriumcorp.scada_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+<!-- END OF scada ADMINISTRATION GROUP ACCESS RIGHTS -->
+
+
+<!-- BEGIN DEFAULT ACCESS RIGHTS -->
+
+<!-- Default access rights to models -->
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_create_init">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.create.init')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_critearea">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.critearea')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_type">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test_type')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_units">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.units')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_patient_scada_test">
+            <field name="model" search="[('model', '=', 'thoriumcorp.patient.scada.test')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+<!-- END OF DEFAULT ACCESS RIGHTS -->
+
+
+<!-- BEGIN DOCTOR GROUP ACCESS RIGHTS -->
+
+
+<!-- Default access rights to models -->
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_create_init_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.create.init')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_critearea_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.critearea')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_type_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test_type')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_units_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.units')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_patient_scada_test_doctor">
+            <field name="model" search="[('model', '=', 'thoriumcorp.patient.scada.test')]"/>
+            <field name="group" ref="thoriumcorp.group_thoriumcorp.doctor"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+<!-- END OF DOCTOR GROUP ACCESS RIGHTS -->
+
+
+<!-- BEGIN scada USER GROUP ACCESS RIGHTS -->
+
+<!-- Create the demo_scada user -->
+        <record model="res.user" id="user_demo_scada">
+            <field name="name">Thorium scada</field>
+            <field name="login">demo_scada</field>
+            <field name="password">gnusolidario</field>
+        </record>
+
+<!-- Create the Thorium scada group -->
+        <record model="res.group" id="group_thoriumcorp.scada">
+            <field name="name">Thorium scada</field>
+        </record>
+
+<!-- Assign the Group to the "demo_scada" user -->
+
+        <record model="res.user-res.group" id="user_demo_scada_group_thoriumcorp.scada">
+            <field name="user" ref="user_demo_scada"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+        </record>
+
+<!-- Access to Menus -->
+
+        <record model="ir.ui.menu-res.group" id="menu_thoriumcorp.group_thoriumcorp.scada">
+            <field name="menu" ref="thoriumcorp.thoriumcorp.menu"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_scada_group_thoriumcorp.scada">
+            <field name="menu" ref="thoriumcorp.scadaweb_menu"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+        </record>
+
+<!-- Access rights to models for the thoriumcorp.scada admin group -->
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_create_init_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.create.init')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_critearea_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.critearea')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_type_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test_type')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_test_units_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.scada.test.units')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_thoriumcorp.scada_patient_scada_test_scada">
+            <field name="model" search="[('model', '=', 'thoriumcorp.patient.scada.test')]"/>
+            <field name="group" ref="group_thoriumcorp.scada"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+<!-- END OF scada USER GROUP ACCESS RIGHTS -->
+
+    </data>
+</odoo>
